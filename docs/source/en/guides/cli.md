@@ -1038,6 +1038,18 @@ Use `hf spaces card` to fetch the Space card (README) for a Space. By default, p
 >>> hf spaces card mteb/leaderboard --text
 ```
 
+### Duplicate a Space
+
+Use `hf spaces duplicate` to copy a Space into your namespace. By default the new Space inherits the source visibility, hardware, secrets, and variables; pass flags to override at duplicate time.
+
+```bash
+>>> hf spaces duplicate username/my-space
+>>> hf spaces duplicate username/my-space my-copy --private
+>>> hf spaces duplicate username/my-space my-copy --hardware l4x4 --secrets HF_TOKEN -v hf://buckets/org/b:/data
+```
+
+Run `hf spaces duplicate --help` for the full flag list, including `--public`/`--protected`, `--storage`, `--sleep-time`, `--secrets-file`, `--env-file`, and `--exist-ok`.
+
 > [!TIP]
 > Pausing or restarting a Space tears down its container, so anything written to the ephemeral filesystem is lost. To persist data across restarts, mount a Volume or bucket with `hf spaces volumes set` (run `hf spaces volumes --help` for details).
 
